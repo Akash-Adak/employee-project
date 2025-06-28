@@ -1,10 +1,8 @@
-Great! Since your project uses **Spring Boot (backend)**, **React (frontend)**, **Docker with Docker Compose**, and **GitHub Actions for CI/CD**, here's a **professional, modern-style `README.md`** that explains everything clearly — from running services to architecture and developer experience.
 
----
 
 ### ✅ Complete `README.md` for `employee-project`
 
-````markdown
+
 # 🧑‍💼 Employee Management System
 
 A full-stack Employee Management application with a **React frontend**, **Spring Boot backend**, **MySQL database**, and **Dockerized microservices architecture**. Integrated with **GitHub Actions** for CI/CD automation.
@@ -136,6 +134,5 @@ This project is licensed under the MIT License.
 
 Feel free to fork this repository and submit pull requests. All contributions are welcome!
 
-```
 
 
