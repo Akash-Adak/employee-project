@@ -4,7 +4,7 @@ import org.codingwallah.emproject.EmProjectApplication;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest(classes = EmProjectApplication.class)
+@SpringBootTest(classes = org.codingwallah.emproject.EmProjectApplication.class)
 class EmProjectApplicationTests {
 
     @Test
