@@ -2,44 +2,42 @@ version: '3.8'
 
 services:
   mysql:
-    image: mysql # Recommended: Use a specific version instead of 'latest'
+    image: mysql:8.0
     container_name: mysql
     restart: always
     environment:
       MYSQL_DATABASE: employee
-      MYSQL_ROOT_PASSWORD: root # IMPORTANT: Change this to a strong password for production!
+      MYSQL_ROOT_PASSWORD: root
     ports:
-      - "3307:3306" # Host port 3307 maps to container port 3306
+      - "3307:3306"
     networks:
       - app-network
     volumes:
       - mysql_data:/var/lib/mysql
-    healthcheck: # Added healthcheck to ensure MySQL is ready before backend connects
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       timeout: 20s
       retries: 10
-      start_period: 30s # Give MySQL extra time to start up initially
+      start_period: 30s
 
   backend:
-    build: ./backend
+    image: akta2910/employee-backend:latest 
     container_name: springboot-app
     depends_on:
       mysql:
-        condition: service_healthy # This ensures MySQL is healthy before starting backend
+        condition: service_healthy
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/employee?useSSL=false&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
-      # Optional: Add the specific driver class name to avoid deprecation warnings
-      # SPRING_DATASOURCE_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
     ports:
       - "9090:9090"
     networks:
       - app-network
-    restart: on-failure # Consider adding a restart policy for robustness
+    restart: on-failure
 
   frontend:
-    build: ./ # Ensure this path is correct for your React app's Dockerfile (e.g., ./frontend if it's in a subfolder)
+    image: akta2910/employee-frontend:latest 
     container_name: react-app
     depends_on:
       - backend
