@@ -1,10 +1,9 @@
-package org.esharma.emproject;
+package org.codingwallah.emproject;
 
-import org.codingwallah.emproject.EmProjectApplication;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest(classes = EmProjectApplication.class)
+@SpringBootTest
 class EmProjectApplicationTests {
 
     @Test
