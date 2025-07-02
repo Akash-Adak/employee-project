@@ -1,7 +1,5 @@
 
 
-### ✅ Complete `README.md` for `employee-project`
-
 
 # 🧑‍💼 Employee Management System
 
